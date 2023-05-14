@@ -475,7 +475,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	margin-bottom: 20px;
 	}
 .leaflet-popup-content {
-    width: 155px;
+    width: 100%;
 }
 .leaflet-popup-content-wrapper {
 	text-align: left;
@@ -498,7 +498,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	        transform: rotate(45deg);
 	}
 .leaflet-container a.leaflet-popup-close-button {
-	position: absolute;
+	/* position: absolute;
 	top: 0;
 	right: 0;
 	border: none;
@@ -508,12 +508,13 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	font: 16px/24px Tahoma, Verdana, sans-serif;
 	color: #757575;
 	text-decoration: none;
-	background: transparent;
+	background: transparent; */
+	display: none;
 	}
-.leaflet-container a.leaflet-popup-close-button:hover,
+/* .leaflet-container a.leaflet-popup-close-button:hover,
 .leaflet-container a.leaflet-popup-close-button:focus {
 	color: #585858;
-	}
+	} */
 .leaflet-popup-scrolled {
 	overflow: auto;
 	}
