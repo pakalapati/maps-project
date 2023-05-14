@@ -3,6 +3,7 @@ import './App.css';
 import './leaflet.css'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { useEffect, useState } from 'react';
+import {isMobileOS} from './commonUtils';
 
 function App() {
 
@@ -29,7 +30,7 @@ function App() {
 
   return (
     <div id="map">
-      <MapContainer center={[0, 0]} zoom={3} scrollWheelZoom={true}>
+      <MapContainer center={isMobileOS() ? [0, -86.23992182162134] : [0, 0]} zoom={isMobileOS() ? 2 : 3} scrollWheelZoom={true}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
