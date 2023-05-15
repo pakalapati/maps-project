@@ -13,35 +13,11 @@ function App() {
   const [touchEnd, setTouchEnd] = useState(0);
   const [imageSource, setImageSource] = useState<string>('');
   const [imageCaption, setImageCaption] = useState<string>('');
-  const [imagePosition, setImagePosition] = useState<string>('');
-  const [currentIndexOfPhoto, setCurrentIndexOfPhoto] = useState<number>(0);
-
-  function handleTouchStart(touchEvent: TouchEvent<HTMLDivElement>) {
-      setTouchStart(touchEvent.targetTouches[0].clientX);
-  }
-
-  function handleTouchMove(touchEvent: TouchEvent<HTMLDivElement>) {
-      setTouchEnd(touchEvent.targetTouches[0].clientX);
-  }
-
-  function handleTouchEnd() {
-      if (touchStart - touchEnd > 150) {
-          // do your stuff here for left swipe
-          // nextImage();
-      }
-
-      if (touchStart - touchEnd < -150) {
-          // do your stuff here for right swipe
-          // previousImage();
-      }
-  }
 
   const photoClicked = (photoIndex: number) => {
     if(photoIndex >= 0){
       setImageSource(images[photoIndex].imageLink);
       setImageCaption(images[photoIndex].title);
-      setImagePosition(images[photoIndex].dataPosition);
-      setCurrentIndexOfPhoto(photoIndex);  
       setOpen(true);
     }
   }
