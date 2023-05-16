@@ -55,9 +55,12 @@ function App() {
           />
           {images.map((photo: any, index: number) => 
               <Marker position={photo.latlong} icon={customIcon} key={index}>
-              <Popup>
-                  <img src={photo.thumbnailLink} alt={photo.title} className="popUpImage" onClick={() => photoClicked(index)}/>
-              </Popup>
+              { photo.thumbnailLink && <Popup>
+                <img src={photo.thumbnailLink} alt={photo.title} className="popUpImage" onClick={() => photoClicked(index)}/>
+              </Popup> }
+              { !photo.thumbnailLink && <Popup className='popUpText'>
+                {photo.title}
+              </Popup> }
             </Marker>
             )} 
         </MapContainer>      
