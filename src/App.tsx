@@ -58,9 +58,6 @@ function App() {
               { photo.thumbnailLink && <Popup>
                 <img src={photo.thumbnailLink} alt={photo.title} className="popUpImage" onClick={() => photoClicked(index)}/>
               </Popup> }
-              { !photo.thumbnailLink && <Popup className='popUpText'>
-                {photo.title}
-              </Popup> }
               <Tooltip>{photo.title}</Tooltip>
             </Marker>
             )} 
