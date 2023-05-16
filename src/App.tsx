@@ -1,7 +1,7 @@
 import { Icon } from 'leaflet';
 import './App.css';
 import './leaflet.css'
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, Tooltip } from 'react-leaflet';
 import { useEffect, useState, TouchEvent } from 'react';
 import {isMobileOS} from './commonUtils';
 
@@ -41,7 +41,7 @@ function App() {
   }, []);
 
   const customIcon = new Icon({
-    iconUrl: "./locationPin.png",
+    iconUrl: "./flag.svg",
     iconSize: [38, 38]
   });
 
@@ -61,6 +61,7 @@ function App() {
               { !photo.thumbnailLink && <Popup className='popUpText'>
                 {photo.title}
               </Popup> }
+              <Tooltip>{photo.title}</Tooltip>
             </Marker>
             )} 
         </MapContainer>      
