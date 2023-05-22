@@ -38,23 +38,44 @@
   background-size: contain;
   background-color: black;
   z-index: 99997;
-  background-position: center center;
+  background-position: center center; 
+
+  &__caption {
+    background-image: -moz-linear-gradient(bottom, rgba(16,16,16,0.75), rgba(16,16,16,0.25) 80%, rgba(16,16,16,0));
+    background-image: -webkit-linear-gradient(bottom, rgba(16,16,16,0.75), rgba(16,16,16,0.25) 80%, rgba(16,16,16,0));
+    background-image: -ms-linear-gradient(bottom, rgba(16,16,16,0.75), rgba(16,16,16,0.25) 80%, rgba(16,16,16,0));
+    background-image: linear-gradient(bottom, rgba(16,16,16,0.75), rgba(16,16,16,0.25) 80%, rgba(16,16,16,0));
+    padding: 2em 2em 0.75em 2em ;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    z-index: inherit;
+    display: none;
+    font-size: xx-large;
+  }
+
+  &__close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    display: none;
+    cursor: pointer;
+  }
+
+  &__close:hover,
+  &__close:focus {
+    opacity: 0.7;
+  }
 }
 
-/* Caption of Modal Image */
-.caption {
-  background-image: -moz-linear-gradient(bottom, rgba(16,16,16,0.75), rgba(16,16,16,0.25) 80%, rgba(16,16,16,0));
-  background-image: -webkit-linear-gradient(bottom, rgba(16,16,16,0.75), rgba(16,16,16,0.25) 80%, rgba(16,16,16,0));
-  background-image: -ms-linear-gradient(bottom, rgba(16,16,16,0.75), rgba(16,16,16,0.25) 80%, rgba(16,16,16,0));
-  background-image: linear-gradient(bottom, rgba(16,16,16,0.75), rgba(16,16,16,0.25) 80%, rgba(16,16,16,0));
-  padding: 2em 2em 0.75em 2em ;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  color: white;
-  z-index: inherit;
-  display: none;
+.fullScreen {
+  display: block !important;
 }
 
 /* Add Animation */
@@ -63,29 +84,6 @@
   -webkit-animation-duration: 0.6s;
   animation-name: zoom;
   animation-duration: 0.6s;
-}
-
-
-/* The Close Button */
-.close {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  transition: 0.3s;
-  display: none;
-  cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-  opacity: 0.7;
-}
-
-.fullScreen {
-  display: block !important;
 }
 
 @-webkit-keyframes zoom {
@@ -103,5 +101,9 @@
 @media only screen and (max-width: 700px){
   .modal-content {
     width: 100%;
+  }
+
+  .fullScreenModal__caption {
+    font-size: small !important;
   }
 }

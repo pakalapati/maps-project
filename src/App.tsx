@@ -1,5 +1,5 @@
 import { Icon } from 'leaflet';
-import './App.css';
+import './App.scss';
 import './leaflet.css'
 import { MapContainer, TileLayer, Marker, Popup, Tooltip } from 'react-leaflet';
 import { useEffect, useState, TouchEvent } from 'react';
@@ -64,8 +64,8 @@ function App() {
         </MapContainer>      
       </div>
       <div className={open ? "fullScreenModal fullScreen" : "fullScreenModal"} style={{ backgroundImage: `url(${imageSource})` }}>
-        <span className={open ? "close fullScreen" : "close"} onClick={toggle}>&times;</span>
-        <div className={open ? "caption fullScreen" : "caption"}>{imageCaption}</div>
+        <span className={open ? "fullScreenModal__close fullScreen" : "fullScreenModal__close"} onClick={toggle}>&times;</span>
+        <div className={open ? "fullScreenModal__caption fullScreen" : "fullScreenModal__caption"}>{imageCaption}</div>
       </div>
     </div>
   );
