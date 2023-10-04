@@ -28,6 +28,9 @@ function App() {
   const onTouchMove = (e: any) => setTouchEnd(e.targetTouches[0].clientX)
   
   const onTouchEnd = () => {
+    if(!open)
+      return;
+      
     if (!touchStart || !touchEnd) return
     const distance = touchStart - touchEnd
     const isLeftSwipe = distance > minSwipeDistance
@@ -99,7 +102,7 @@ function App() {
   });
 
   return (
-      <div onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd} >
+      <div>
         <div id="map">
           <MapContainer center={isMobileOS() ? [0, -86.23992182162134] : [0, 0]} zoom={isMobileOS() ? 2 : 3} scrollWheelZoom={true} minZoom={isMobileOS() ? 2 : 3} worldCopyJump={true}>
             <TileLayer
@@ -113,7 +116,7 @@ function App() {
               )} 
           </MapContainer>      
         </div>
-        <div className={open ? "fullScreenModal fullScreen" : "fullScreenModal"} style={{ backgroundImage: `url(${imageSource})` }}>
+        <div className={open ? "fullScreenModal fullScreen" : "fullScreenModal"} style={{ backgroundImage: `url(${imageSource})` }} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd} >
           <span className={open ? "fullScreenModal__close fullScreen" : "fullScreenModal__close"} onClick={toggle}><img src={isMobileOS() ? "./close-small.svg" : "./close.svg"}></img></span>
           <div className={open ? "fullScreenModal__caption fullScreen" : "fullScreenModal__caption"}>{imageCaption}</div>
           <img src={isMobileOS() ? "./arrow-small.svg" : "./arrow.svg"} className={open ? "fullScreenModal__nav-next fullScreen" : "fullScreenModal__close"} onClick={nextImage}></img>
