@@ -13,6 +13,33 @@ function App() {
   const [imageCaption, setImageCaption] = useState<string>('');
   const [imageIndex, setImageIndex] = useState<number>(-1);
 
+  //swipe actions
+  const [touchStart, setTouchStart] = useState(null)
+  const [touchEnd, setTouchEnd] = useState(null)
+
+  // the required distance between touchStart and touchEnd to be detected as a swipe
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: any) => {
+    setTouchEnd(null) // otherwise the swipe is fired even with usual touch events
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+  
+  const onTouchMove = (e: any) => setTouchEnd(e.targetTouches[0].clientX)
+  
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return
+    const distance = touchStart - touchEnd
+    const isLeftSwipe = distance > minSwipeDistance
+    const isRightSwipe = distance < -minSwipeDistance
+    if (isLeftSwipe) {
+      nextImage();
+    }
+    else if (isRightSwipe) {
+      previousImage();
+    }
+  }
+
   const photoClicked = (photoIndex: number) => {
     if(photoIndex >= 0 && images[photoIndex].imageLink){
 
@@ -72,7 +99,7 @@ function App() {
   });
 
   return (
-      <div>
+      <div onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd} >
         <div id="map">
           <MapContainer center={isMobileOS() ? [0, -86.23992182162134] : [0, 0]} zoom={isMobileOS() ? 2 : 3} scrollWheelZoom={true} minZoom={isMobileOS() ? 2 : 3} worldCopyJump={true}>
             <TileLayer
