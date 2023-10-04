@@ -1,11 +1,9 @@
 import { Icon } from 'leaflet';
 import './App.scss';
 import './leaflet.css'
-import { MapContainer, TileLayer, Marker, Popup, Tooltip } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Tooltip } from 'react-leaflet';
 import { useEffect, useState } from 'react';
 import {isMobileOS} from './commonUtils';
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css'
 
 function App() {
 
@@ -13,17 +11,40 @@ function App() {
   const [open, setOpen] = useState<Boolean>(false);
   const [imageSource, setImageSource] = useState<string>('');
   const [imageCaption, setImageCaption] = useState<string>('');
+  const [imageIndex, setImageIndex] = useState<number>(-1);
 
   const photoClicked = (photoIndex: number) => {
     if(photoIndex >= 0 && images[photoIndex].imageLink){
+
       setImageSource(images[photoIndex].imageLink);
       setImageCaption(images[photoIndex].title);
-      setOpen(true);
+      setImageIndex(photoIndex);
+      if(!open)
+        setOpen(true);
+
     }
   }
 
   const toggle = () => {
     setOpen(!open);
+	}
+
+  const nextImage = () => {
+    var currentIndex = (imageIndex + 1) % images.length;
+    while(!images[currentIndex].imageLink)
+    {
+      currentIndex = (currentIndex + 1) % images.length;
+    }
+    photoClicked(currentIndex);
+	}
+
+  const previousImage = () => {
+    var currentIndex = (imageIndex - 1) % images.length;
+    while(!images[currentIndex].imageLink)
+    {
+      currentIndex = (currentIndex - 1) % images.length;
+    }
+    photoClicked(currentIndex);
 	}
 
   const getPhotos=()=>{
@@ -66,8 +87,10 @@ function App() {
           </MapContainer>      
         </div>
         <div className={open ? "fullScreenModal fullScreen" : "fullScreenModal"} style={{ backgroundImage: `url(${imageSource})` }}>
-          <span className={open ? "fullScreenModal__close fullScreen" : "fullScreenModal__close"} onClick={toggle}>&times;</span>
+          <span className={open ? "fullScreenModal__close fullScreen" : "fullScreenModal__close"} onClick={toggle}><img src={isMobileOS() ? "./close-small.svg" : "./close.svg"}></img></span>
           <div className={open ? "fullScreenModal__caption fullScreen" : "fullScreenModal__caption"}>{imageCaption}</div>
+          <div className={open ? "fullScreenModal__nav-next fullScreen" : "fullScreenModal__close"} onClick={nextImage}></div>
+          <div className={open ? "fullScreenModal__nav-previous fullScreen" : "fullScreenModal__close"} onClick={previousImage}></div>
         </div>
       </div>
     
