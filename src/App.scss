@@ -82,11 +82,8 @@
 	&__nav-previous {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     position: absolute;
-    top: 50%;
-    width: 6em;
-    height: 6em;
+    top: 55%;
     margin-top: -3em;
-    background-image: url("./images/arrow.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -139,11 +136,6 @@
   .fullScreenModal {
     &__caption {
       font-size: small !important;
-    }
-
-    &__nav-next,
-	  &__nav-previous {
-      background-image: url("./images/arrow-small.svg");
     }
   }
 

@@ -89,11 +89,10 @@ function App() {
         <div className={open ? "fullScreenModal fullScreen" : "fullScreenModal"} style={{ backgroundImage: `url(${imageSource})` }}>
           <span className={open ? "fullScreenModal__close fullScreen" : "fullScreenModal__close"} onClick={toggle}><img src={isMobileOS() ? "./close-small.svg" : "./close.svg"}></img></span>
           <div className={open ? "fullScreenModal__caption fullScreen" : "fullScreenModal__caption"}>{imageCaption}</div>
-          <div className={open ? "fullScreenModal__nav-next fullScreen" : "fullScreenModal__close"} onClick={nextImage}></div>
-          <div className={open ? "fullScreenModal__nav-previous fullScreen" : "fullScreenModal__close"} onClick={previousImage}></div>
+          <img src={isMobileOS() ? "./arrow-small.svg" : "./arrow.svg"} className={open ? "fullScreenModal__nav-next fullScreen" : "fullScreenModal__close"} onClick={nextImage}></img>
+          <img src={isMobileOS() ? "./arrow-small.svg" : "./arrow.svg"} className={open ? "fullScreenModal__nav-previous fullScreen" : "fullScreenModal__close"} onClick={previousImage}></img>
         </div>
       </div>
-    
   );
 }
 
