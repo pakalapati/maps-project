@@ -114,7 +114,11 @@ function App() {
                 <Tooltip>{photo.title}</Tooltip>
               </Marker>
               )} 
-          </MapContainer>      
+          </MapContainer>
+          <div className="legend">
+            <div><img src="./flag.svg" className='legend__flag'></img><label>Photo</label></div>
+            <div><img src="./no-photo-flag.svg" className='legend__flag'></img><label>No Photo</label></div>
+          </div>     
         </div>
         <div className={open ? "fullScreenModal fullScreen" : "fullScreenModal"} style={{ backgroundImage: `url(${imageSource})` }} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd} >
           <span className={open ? "fullScreenModal__close fullScreen" : "fullScreenModal__close"} onClick={toggle}><img src={isMobileOS() ? "./close-small.svg" : "./close.svg"}></img></span>

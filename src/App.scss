@@ -3,6 +3,26 @@
     height: 100vh;
   }
 
+.legend {
+  display: flex;
+  position: fixed; /* Stay in place */
+  left: 0;
+  bottom: 0;
+  z-index: 999;
+  height: 25px;
+  padding-bottom: 15px;
+  padding-left: 10px;
+
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font-size: 0.85rem;
+
+  &__flag {
+    width: 25px;
+    height: 25px;
+    vertical-align: sub;
+  }
+}
+
 .popUpImage {
   max-Width: 150px;
   max-height: 120px;
@@ -37,7 +57,6 @@
 .fullScreenModal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
