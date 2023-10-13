@@ -116,8 +116,8 @@ function App() {
               )} 
           </MapContainer>
           <div className="legend">
-            <div><img src="./flag.svg" className='legend__flag'></img><label>Photo</label></div>
-            <div><img src="./no-photo-flag.svg" className='legend__flag'></img><label>No Photo</label></div>
+            <div><img src="./flag.svg" className='legend__flag'></img><label>Pic</label></div>
+            <div><img src="./no-photo-flag.svg" className='legend__flag'></img><label>Yet To Upload Pic</label></div>
           </div>     
         </div>
         <div className={open ? "fullScreenModal fullScreen" : "fullScreenModal"} style={{ backgroundImage: `url(${imageSource})` }} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd} >
